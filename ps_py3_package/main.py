@@ -55,7 +55,7 @@ if __name__=="__main__":
       pk = cpool.make_table(cl, nk = args.nk, kmin = args.kmin, kmax = args.kmax, npool = args.npool, z = args.z, M = args.M)
 
       ##Save it
-      cl.save_pk(pk, outfile)
+      cpool.save_pk(pk, outfile)
 
       
          #header = 'k[h/Mpc]   Q1   Q2    Q3    Q5    Q8     Qs2    \n'

@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#SBATCH -t 08:00:00
+#SBATCH -t 03:00:00
 #SBATCH --nodes=1
 # #SBATCH --mem=40GB
 #SBATCH --export=ALL
@@ -14,16 +14,17 @@
 # #SBATCH --dependency=afterok:60705
 
 set -x
-# export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=1
 # module load helios
-
-source activate CLEFT-env
 
 BASE=/home/mschmittfull/lssbisp2013/SO/CLEFT_GSM_marcel
 
+
+source activate CLEFT-env
+
 # helios has 14 dual core cpus per node, so 28 cores per node
 # ./run_nbk03.sh mpiexec -n 28 python /home/mschmittfull/lssbisp2013/psiRec/psirec/rec_utils_nbk03/test_linear_term_fisher_nbk03.py_tryA7
-python $BASE/ps_py3_package/main.py --pfile $BASE/ps_python3/pklin_RunPB.txt --npool 28 --nk 50 --saveq True --saver True --saveqfunc True
+/home/mschmittfull/anaconda2/envs/CLEFT-env/bin/python $BASE/ps_py3_package/main.py --pfile $BASE/ps_python3/pklin_RunPB.txt --npool 28 --nk 50 --saveq True --saver True --saveqfunc True
 
 source deactivate
             
